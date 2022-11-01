@@ -1,14 +1,16 @@
-/*
+
 window.saveDataAcrossSessions = true
+
+var data;
 
 window.addEventListener("load", () => {
     webgazer.setGazeListener(function (data, elapsedTime) {
         if (data == null) {
             return;
         }
-        var xprediction = data.x; //these x coordinates are relative to the viewport
-        var yprediction = data.y; //these y coordinates are relative to the viewport
-        console.log(xprediction, yprediction);
+        // var xprediction = data.x; //these x coordinates are relative to the viewport
+        // var yprediction = data.y; //these y coordinates are relative to the viewport
+        // console.log(xprediction, yprediction);
     }).begin();
 
     //setTimeout(() => {
@@ -16,43 +18,43 @@ window.addEventListener("load", () => {
     //}, 15000);
 
     setInterval(async () => {
-        let data = await webgazer.getCurrentPrediction();
-        console.log(data);
+        data = await webgazer.getCurrentPrediction();
+        // console.log(data);
     }, 1000);
 });
 
 // Seleccion de botones
-const botones = document.querySelectorAll ("button")
+const botones = document.querySelectorAll("button")
 
 // Deteccion de eye tracker sobre boton
 
 window.addEventListener("load", () => {
     webgazer.setGazeListener(function (data, elapsedTime) {
 
-        var xprediction = data.x
-        var yprediction = data.y
-
-        const isHovered = (e, xpredictionn, ypredictionn) => {
+        const isHovered = (e) => {
             const pos = e.getBoundingClientRect();
-            return (xprediction > pos.left && xprediction <= pos.right && yprediction > pos.top && yprediction <= pos.bottom);
+            // console.log(pos);
+            // console.log(data);
+            return (data.x > pos.left && data.x <= pos.right && data.y > pos.top && data.y <= pos.bottom);
         }
-        
+
         // Filtro del tipo de boton y ejecucion de su respectiva funcinalidad
-        botones.forEach ((e) => {
-            if (isHovered(e, xprediction, yprediction)) {
-                e.dispatchEvent(new Event("mouseenter"));
+        botones.forEach((e) => {
+            if (isHovered(e)) {
+                handleEnter(e);
             } else {
-                e.dispatchEvent(new Event("mouseleave"));
+                setTimeout(() => {
+                    handleLeave(e);
+                }, 300);
             }
         })
     })
 });
 
-*/
 
 //Botones, Text Areas, etc.
 let onButton
-let texto = document.getElementById ("textArea")
+let texto = document.getElementById("textArea")
 let msg = new SpeechSynthesisUtterance()
 
 console.log(window.location.href);
@@ -60,6 +62,7 @@ let url = new URL(window.location.href)
 let textoAnterior = url.searchParams.get('texto')
 texto.value = textoAnterior
 
+/*
 let btns = document.getElementsByClassName("boton1")
 
 for(let i = 0; i < btns.length; i++) {
@@ -156,6 +159,7 @@ for (let i = 0; i < btnenter.length; i++) {
     btnenter[i].addEventListener("mouseenter", done)
     btnenter[i].addEventListener("mouseleave", handleLeave)
 }
+*/
 //Funciones
 //let txtArea = document.getElementById("textArea")
 
@@ -163,119 +167,157 @@ for (let i = 0; i < btnenter.length; i++) {
 
 function handleLeave() {
     onButton = null;
+    e.classList.remove("hover");
 }
 
-function vinicio(d) {
-    onButton = d.target;
+function vinicio(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './index.html'
         }
-    }, 1500);
+    }, 1100);
 }
 
 function handleEnter(e) {
-    onButton = e.target;
+    // console.log(e);
+    // console.log(onButton);
+    // onButton = e;
+    // console.log(onButton);
     setTimeout(() => {
-        if(onButton === e.target){
-            texto.value = texto.value + e.target.innerHTML;
+        if (onButton === e) {
+            e.classList.add("hover");
+            if (e.classList.has("boton1") || e.classList.has("numero")) {
+                texto.value = texto.value + e.innerHTML;
+            } else if (e.classList.has("btnspace")) {
+                texto.value += " ";
+            } else if (e.classList.has("btndelete")) {
+                borrar(e);
+            } else if (e.classList.has("btnborrar")) {
+                texto.value = "";
+            } else if (e.classList.has("btnseccionA")) {
+                seccion1(e);
+            } else if (e.classList.has("btnseccionJ")) {
+                seccion2(e);
+            } else if (e.classList.has("btnseccionS")) {
+                seccion3(e);
+            } else if (e.classList.has("btnseccion0")) {
+                seccion4(e);
+            } else if (e.classList.has("volver")) {
+                vinicio(e);
+            } else if (e.classList.has("done")) {
+                done(e);
+            }
         }
-    }, 1500);
+    }, 1100);
 }
 
+/*
 function handleSubmit(e) {
-    onButton = e.target;
+    onButton = e;
     setTimeout(() => {
-        if(onButton === e.target){
+        if(onButton === e){
+            e.classList.add("hover")
             let voices = window.speechSynthesis.getVoices()
             msg.voice = voices[2]
             msg.text = texto.value
             speakData.lang = 'es';
             window.speechSynthesis.speak(msg)
         }
-    }, 1500);
-}
+    }, 1100);
+}*/
 
-function done (e){
-    onButton = e.target;
+function done(e) {
+    onButton = e;
     setTimeout(() => {
-        if(onButton === e.target){
+        if (onButton === e) {
+            e.classList.add("hover");
             let voices = window.speechSynthesis.getVoices()
             msg.voice = voices[10]
             msg.text = texto.value
             msg.lang = 'es'
             window.speechSynthesis.speak(msg)
         }
-    }, 1500);
+    }, 1100);
 }
 
-function espacio (a) {
-    onButton = a.target;
+function espacio(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === a.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             texto.value = texto.value += " ";
         }
-    }, 1500);
+    }, 1100);
 }
 
-function borrar (b) {
-    onButton = b.target;
+function borrar(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === b.target) {
-            texto.value = texto.value.substring(0, texto.value.length - 1)        }
-    }, 1500);
-}
-
-function borrar_completo (c) {
-    onButton = c.target;
-    setTimeout(() => {
-        if (onButton === c.target) {
-            texto.value = texto.value.substring(0, texto.value) 
+        if (onButton === e) {
+            e.classList.add("hover");
+            texto.value = texto.value.substring(0, texto.value.length - 1)
         }
-    },1500);
+    }, 1100);
 }
 
-function seccion1 (d) {
-    onButton = d.target;
+function borrar_completo(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
+            texto.value = texto.value.substring(0, texto.value)
+        }
+    }, 1100);
+}
+
+function seccion1(e) {
+    onButton = e;
+    setTimeout(() => {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './A-I.html?texto=' + texto.value
         }
-    },1500);
+    }, 1100);
 }
 
-function seccion2 (d) {
-    onButton = d.target;
+function seccion2(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './J-R.html?texto=' + texto.value
         }
-    },1500);
+    }, 1100);
 }
 
-function seccion3 (d) {
-    onButton = d.target;
+function seccion3(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './S-Z.html?texto=' + texto.value
         }
-    },1500);
+    }, 1100);
 }
 
-function seccion4 (d) {
-    onButton = d.target;
+function seccion4(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './0-9.html?texto=' + texto.value
         }
-    },1500);
+    }, 1100);
 }
 
-function seccion5 (d) {
-    onButton = d.target;
+function seccion5(e) {
+    onButton = e;
     setTimeout(() => {
-        if (onButton === d.target) {
+        if (onButton === e) {
+            e.classList.add("hover");
             window.location.href = './signos.html?texto=' + texto.value
         }
-    },1500);
+    }, 1100);
 }
