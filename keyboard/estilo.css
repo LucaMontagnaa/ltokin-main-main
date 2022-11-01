@@ -55,7 +55,7 @@ img.next {
 .volver{
     height: 150px;
     width: 225px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
     margin-bottom: 60px;
 }
 
@@ -67,7 +67,7 @@ img.next {
     height: 150px;
     width: 225px;
     margin-bottom: 60px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 }
 
 .done.hover {
@@ -142,12 +142,12 @@ img.next {
     margin: auto;
     margin-bottom: 35px;
     margin-top: 35px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
     */
 
     height: 150px;
     width: 225px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
     margin-bottom: 60px;
 }
 
@@ -160,7 +160,7 @@ img.next {
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 */
     height: 150px;
     width: 225px;
@@ -180,12 +180,12 @@ img.next {
     justify-content: center;
     margin-bottom: 35px;
     margin-top: 35px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
     */
     
     height: 150px;
     width: 225px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
     margin-bottom: 60px;
 }
 
@@ -210,17 +210,17 @@ img.next {
     height: 150px;
     justify-content: center;
     margin-bottom: 60px;
-    transition: background-color 2s ease-in; */
+    transition: background-color 1S ease-in; */
 
     /*  width: 225px;
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 */
 height: 150px;
 width: 225px;
-transition: background-color 2s ease-in;
+transition: background-color 1S ease-in;
 margin-bottom: 60px;
 }
 
@@ -233,17 +233,17 @@ margin-bottom: 60px;
     height: 150px;
     justify-content: center;
     margin-bottom: 60px;
-    transition: background-color 2s ease-in;*/
+    transition: background-color 1S ease-in;*/
 
     /*  width: 225px;
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 */
 height: 150px;
 width: 225px;
-transition: background-color 2s ease-in;
+transition: background-color 1S ease-in;
 margin-bottom: 60px;
 }
 
@@ -256,17 +256,17 @@ margin-bottom: 60px;
     height: 150px;
     justify-content: center;
     margin-bottom: 60px;
-    transition: background-color 2s ease-in;*/
+    transition: background-color 1S ease-in;*/
 
     /*  width: 225px;
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 */
 height: 150px;
 width: 225px;
-transition: background-color 2s ease-in;
+transition: background-color 1S ease-in;
 margin-bottom: 60px;
 }
 
@@ -287,17 +287,17 @@ margin-bottom: 60px;
     height: 150px;
     justify-content: center;
     margin-bottom: 60px;
-    transition: background-color 2s ease-in;*/
+    transition: background-color 1S ease-in;*/
 
     /*  width: 225px;
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 */
 height: 150px;
 width: 225px;
-transition: background-color 2s ease-in;
+transition: background-color 1S ease-in;
 margin-bottom: 60px;
 }
 
@@ -310,7 +310,7 @@ margin-bottom: 60px;
     height: 150px;
     justify-content: center;
     margin-bottom: 40px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 }
 
 .btnseccionSS.hover {
@@ -335,7 +335,7 @@ margin-bottom: 60px;
     width: 200px;
     height: 230px;
     margin: 10px 10px;
-    transition: background-color 2s ease-in;
+    transition: background-color 1S ease-in;
 }
 
 .numero.hover {

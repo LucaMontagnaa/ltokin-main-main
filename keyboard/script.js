@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
             } else {
                 setTimeout(() => {
                     handleLeave(e);
-                }, 300);
+                }, 1200);
             }
         })
     })
@@ -165,7 +165,7 @@ for (let i = 0; i < btnenter.length; i++) {
 
 
 
-function handleLeave() {
+function handleLeave(e) {
     onButton = null;
     e.classList.remove("hover");
 }
@@ -177,40 +177,46 @@ function vinicio(e) {
             e.classList.add("hover");
             window.location.href = './index.html'
         }
-    }, 1100);
+    }, 1000);
 }
 
-function handleEnter(e) {
-    // console.log(e);
+function handleEnter(e) { 
+    onButton = e;
+    
+    //console.log(e);
     // console.log(onButton);
     // onButton = e;
     // console.log(onButton);
     setTimeout(() => {
         if (onButton === e) {
+
+            console.log(e.className)
+            var cname = e.className;
             e.classList.add("hover");
-            if (e.classList.has("boton1") || e.classList.has("numero")) {
+
+            if (cname === "boton1" || cname === "numero") {
                 texto.value = texto.value + e.innerHTML;
-            } else if (e.classList.has("btnspace")) {
-                texto.value += " ";
-            } else if (e.classList.has("btndelete")) {
-                borrar(e);
-            } else if (e.classList.has("btnborrar")) {
-                texto.value = "";
-            } else if (e.classList.has("btnseccionA")) {
+            } else if (cname === "btnspace") {
+                texto.value = texto.value += " ";
+            } else if (cname === "btndelete") {
+                texto.value = texto.value.substring(0, texto.value.length - 1)
+            } else if (cname === "btnborrar") {
+                texto.value = texto.value.substring(0, texto.value)
+            } else if (cname === "btnseccionA") {
                 seccion1(e);
-            } else if (e.classList.has("btnseccionJ")) {
+            } else if (cname === "btnseccionJ") {
                 seccion2(e);
-            } else if (e.classList.has("btnseccionS")) {
+            } else if (cname === "btnseccionS") {
                 seccion3(e);
-            } else if (e.classList.has("btnseccion0")) {
+            } else if (cname === "btnseccion0") {
                 seccion4(e);
-            } else if (e.classList.has("volver")) {
+            } else if (cname === "volver") {
                 vinicio(e);
-            } else if (e.classList.has("done")) {
+            } else if (cname === "done") {
                 done(e);
             }
         }
-    }, 1100);
+    }, 1000);
 }
 
 /*
@@ -225,7 +231,7 @@ function handleSubmit(e) {
             speakData.lang = 'es';
             window.speechSynthesis.speak(msg)
         }
-    }, 1100);
+    }, 11000);
 }*/
 
 function done(e) {
@@ -239,7 +245,7 @@ function done(e) {
             msg.lang = 'es'
             window.speechSynthesis.speak(msg)
         }
-    }, 1100);
+    }, 1000);
 }
 
 function espacio(e) {
@@ -249,7 +255,7 @@ function espacio(e) {
             e.classList.add("hover");
             texto.value = texto.value += " ";
         }
-    }, 1100);
+    }, 1000);
 }
 
 function borrar(e) {
@@ -259,7 +265,7 @@ function borrar(e) {
             e.classList.add("hover");
             texto.value = texto.value.substring(0, texto.value.length - 1)
         }
-    }, 1100);
+    }, 1000);
 }
 
 function borrar_completo(e) {
@@ -269,7 +275,7 @@ function borrar_completo(e) {
             e.classList.add("hover");
             texto.value = texto.value.substring(0, texto.value)
         }
-    }, 1100);
+    }, 1000);
 }
 
 function seccion1(e) {
@@ -279,7 +285,7 @@ function seccion1(e) {
             e.classList.add("hover");
             window.location.href = './A-I.html?texto=' + texto.value
         }
-    }, 1100);
+    }, 1000);
 }
 
 function seccion2(e) {
@@ -289,7 +295,7 @@ function seccion2(e) {
             e.classList.add("hover");
             window.location.href = './J-R.html?texto=' + texto.value
         }
-    }, 1100);
+    }, 1000);
 }
 
 function seccion3(e) {
@@ -299,7 +305,7 @@ function seccion3(e) {
             e.classList.add("hover");
             window.location.href = './S-Z.html?texto=' + texto.value
         }
-    }, 1100);
+    }, 1000);
 }
 
 function seccion4(e) {
@@ -309,7 +315,7 @@ function seccion4(e) {
             e.classList.add("hover");
             window.location.href = './0-9.html?texto=' + texto.value
         }
-    }, 1100);
+    }, 1000);
 }
 
 function seccion5(e) {
@@ -319,5 +325,5 @@ function seccion5(e) {
             e.classList.add("hover");
             window.location.href = './signos.html?texto=' + texto.value
         }
-    }, 1100);
+    }, 1000);
 }
