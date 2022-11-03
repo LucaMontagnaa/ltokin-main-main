@@ -26,6 +26,11 @@ h3{
     font-size: 1.75em;
 }
 
+h4{
+    font-size: 1.25em;
+    color: white;
+}
+
 .boton{
     font-size: 1.25em;
     font-weight: bold;
@@ -250,6 +255,10 @@ footer{
 .card .contenido-card a:hover{
     background-color: rgb(53, 14, 124);	
     color: white;
+}
+
+#cards p{
+    font-size: 1em;
 }
 
 #cards{
